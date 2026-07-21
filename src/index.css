@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Poppins', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --color-brand-500: #7c3aed;
+  --color-brand-600: #6d28d9;
+  --color-brand-700: #5b21b6;
+  --color-brand-800: #4c1d95;
+  --color-accent-400: #8fdc6a;
+  --color-accent-500: #6fce4a;
+  --color-accent-600: #57b636;
+}
+
+html,
+body,
+#root {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(165deg, #7c3aed 0%, #5b21b6 55%, #4c1d95 100%);
+  background-attachment: fixed;
+  @apply text-white antialiased;
+}
