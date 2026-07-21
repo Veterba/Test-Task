@@ -10,6 +10,7 @@ export function QuizProvider({ children }) {
     quizzes: [],
     error: null,
   })
+  const [aiQuiz, setAiQuiz] = useState(null)
   const [session, dispatch] = useReducer(sessionReducer, initialSession)
 
   const reload = useCallback(async () => {
@@ -27,14 +28,19 @@ export function QuizProvider({ children }) {
   }, [reload])
 
   const getQuiz = useCallback(
-    (id) => catalog.quizzes.find((q) => q.id === id) ?? null,
-    [catalog.quizzes],
+    (id) => {
+      if (aiQuiz && aiQuiz.id === id) return aiQuiz
+      return catalog.quizzes.find((q) => q.id === id) ?? null
+    },
+    [catalog.quizzes, aiQuiz],
   )
 
   const value = {
     ...catalog,
     reload,
     getQuiz,
+    aiQuiz,
+    setAiQuiz,
     session,
     startQuiz: (quizId) => dispatch({ type: 'start', quizId, now: Date.now() }),
     answerQuestion: (answer) => dispatch({ type: 'answer', answer }),

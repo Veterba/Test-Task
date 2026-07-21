@@ -63,6 +63,25 @@ export function buildQuizzes(
   return quizzes
 }
 
+export const AI_QUIZ_ID = 'ai'
+
+export function buildAiQuiz(topic, raw, rng = Math.random) {
+  const questions = raw.slice(0, 5).map((q) =>
+    normalizeQuestion(
+      {
+        question: q.question,
+        correct_answer: q.correct_answer,
+        incorrect_answers: q.incorrect_answers,
+        category: topic,
+        difficulty: q.difficulty || 'medium',
+        type: 'multiple',
+      },
+      rng,
+    ),
+  )
+  return { id: AI_QUIZ_ID, name: `AI · ${topic}`, questions }
+}
+
 export function pickRandomQuiz(quizzes, rng = Math.random) {
   if (!quizzes.length) return null
   return quizzes[Math.floor(rng() * quizzes.length)]

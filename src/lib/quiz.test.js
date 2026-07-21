@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
+  AI_QUIZ_ID,
+  buildAiQuiz,
   buildQuizzes,
   computeStats,
   decodeHtml,
@@ -75,6 +77,27 @@ describe('buildQuizzes', () => {
   it('drops an incomplete trailing quiz', () => {
     const quizzes = buildQuizzes(makeRaw(48), { rng: () => 0 })
     expect(quizzes).toHaveLength(9)
+  })
+})
+
+describe('buildAiQuiz', () => {
+  const raw = Array.from({ length: 5 }, (_, i) => ({
+    question: `Q${i}`,
+    correct_answer: `A${i}`,
+    incorrect_answers: [`B${i}`, `C${i}`, `D${i}`],
+    difficulty: 'medium',
+  }))
+
+  it('builds a 5-question quiz tagged with the topic', () => {
+    const quiz = buildAiQuiz('Space', raw, () => 0)
+    expect(quiz.id).toBe(AI_QUIZ_ID)
+    expect(quiz.name).toContain('Space')
+    expect(quiz.questions).toHaveLength(5)
+    quiz.questions.forEach((q) => {
+      expect(q.answers).toHaveLength(4)
+      expect(q.answers).toContain(q.correctAnswer)
+      expect(q.category).toBe('Space')
+    })
   })
 })
 
