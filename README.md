@@ -13,8 +13,12 @@ and builds 10 quizzes of 5 questions each.
 
 ```bash
 npm install    # install dependencies
+cp .env.example .env.local   # add your Gemini API key for the AI quiz page
 npm run dev    # start the dev server (http://localhost:5173)
 ```
+
+`VITE_GEMINI_API_KEY` powers the AI quiz page. The rest of the app works
+without it.
 
 ## Scripts
 

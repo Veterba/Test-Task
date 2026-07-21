@@ -1,5 +1,4 @@
-// Free demo key, kept in source on purpose for this take-home project.
-const API_KEY = 'AQ.Ab8RN6KXrK_YDKBM5ycSTaAqS58NMwdpsA9es0k-h8CXPayScg'
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY
 const URL =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
 
@@ -18,6 +17,8 @@ const schema = {
 }
 
 export async function generateQuestions(topic) {
+  if (!API_KEY) throw new Error('Missing VITE_GEMINI_API_KEY.')
+
   const prompt =
     `Create 5 multiple-choice trivia questions about "${topic}". ` +
     'Each question has exactly one correct answer and three plausible but wrong answers.'
