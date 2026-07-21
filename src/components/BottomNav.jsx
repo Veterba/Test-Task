@@ -1,8 +1,9 @@
 import { Link, useLocation } from 'react-router-dom'
-import { FlagIcon, HomeIcon, PlayIcon } from './icons'
+import { FlagIcon, HomeIcon, PlayIcon, SparkleIcon } from './icons'
 
 const TABS = [
   { key: 'home', label: 'Home', to: '/', match: (p) => p === '/', Icon: HomeIcon },
+  { key: 'ai', label: 'AI quiz', to: '/ai', match: (p) => p === '/ai', Icon: SparkleIcon },
   { key: 'play', label: 'Play', match: (p) => p.startsWith('/play'), Icon: PlayIcon },
   { key: 'finish', label: 'Finish', match: (p) => p.startsWith('/finish'), Icon: FlagIcon },
 ]

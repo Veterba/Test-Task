@@ -32,6 +32,15 @@ export function FlagIcon(props) {
   )
 }
 
+export function SparkleIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" {...base} {...props}>
+      <path d="M12 3l1.8 4.9L18.7 9.7 13.8 11.5 12 16.4 10.2 11.5 5.3 9.7l4.9-1.8z" />
+      <path d="M18 15l.7 1.9 1.9.7-1.9.7-.7 1.9-.7-1.9-1.9-.7 1.9-.7z" />
+    </svg>
+  )
+}
+
 export function ClockIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...base} {...props}>
