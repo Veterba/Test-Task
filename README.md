@@ -4,10 +4,16 @@ A small quiz SPA (Vite + React + Tailwind, routed with React Router).
 On load it fetches 50 questions from the [Open Trivia DB](https://opentdb.com/)
 and builds 10 quizzes of 5 questions each.
 
+**Live demo:** https://test-task-sigma-weld.vercel.app/
+
 - **Home** — browse quizzes or hit "I'm lucky" for a random one.
+- **AI quiz** — type any topic and get a generated 5-question quiz.
 - **Play** — answer one question at a time; pick an answer to reveal if it was
   right, then continue. Cancel any time.
 - **Finish** — score, correct answers, time and a few extra stats.
+
+The AI quiz uses raw **Gemini 2.5 Flash** (no fine-tuning or extra grounding),
+so questions and answers are as the model returns them.
 
 ## Getting started
 
